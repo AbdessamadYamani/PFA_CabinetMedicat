@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "879963254230",
+    "firebase_url": "https://pfa-cabinetmedical-default-rtdb.firebaseio.com",
+    "project_id": "pfa-cabinetmedical",
+    "storage_bucket": "pfa-cabinetmedical.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879963254230:android:b2ac722cd584220bab4877",
+        "android_client_info": {
+          "package_name": "com.yame.cabinetmedical"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879963254230-h45005l491ece8imbbrl9smls9pvab2s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yame.cabinetmedical",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "879963254230-gmi83g7jnl1e0ipboqs851a44blf3lf3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHDflEFBOEdBITlkocb7bovh2K7bpYIhI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879963254230-gmi83g7jnl1e0ipboqs851a44blf3lf3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "879963254230-sn7q0d0f25p3q4d3s9grqr7ah7tm5o3i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yame.cabinetmedical"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
