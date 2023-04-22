@@ -41,6 +41,8 @@ class _MyAppState extends State<MyApp> {
   BaseAuthUser? initialUser;
   bool displaySplashImage = true;
 
+  final authUserSub = authenticatedUserStream.listen((_) {});
+
   @override
   void initState() {
     super.initState();
@@ -51,6 +53,13 @@ class _MyAppState extends State<MyApp> {
       Duration(seconds: 1),
       () => setState(() => displaySplashImage = false),
     );
+  }
+
+  @override
+  void dispose() {
+    authUserSub.cancel();
+
+    super.dispose();
   }
 
   void setLocale(String language) {
@@ -91,7 +100,7 @@ class _MyAppState extends State<MyApp> {
             )
           : currentUser!.loggedIn
               ? DashboardWidget()
-              : Login2Widget(),
+              : HomePageWidget(),
     );
   }
 }

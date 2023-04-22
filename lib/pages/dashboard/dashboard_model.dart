@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/chat_page/chat_page_widget.dart';
 import '/pages/details/details_widget.dart';
+import '/pages/history/history_widget.dart';
+import '/pages/list_info/list_info_widget.dart';
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

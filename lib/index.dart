@@ -7,3 +7,6 @@ export '/pages/dashboard/dashboard_widget.dart' show DashboardWidget;
 export '/pages/details/details_widget.dart' show DetailsWidget;
 export '/pages/history/history_widget.dart' show HistoryWidget;
 export '/pages/list_app/list_app_widget.dart' show ListAppWidget;
+export '/pages/chat_page/chat_page_widget.dart' show ChatPageWidget;
+export '/pages/list_info/list_info_widget.dart' show ListInfoWidget;
+export '/pages/settings/settings_widget.dart' show SettingsWidget;

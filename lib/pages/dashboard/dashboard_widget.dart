@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/chat_page/chat_page_widget.dart';
 import '/pages/details/details_widget.dart';
+import '/pages/history/history_widget.dart';
+import '/pages/list_info/list_info_widget.dart';
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -407,31 +410,45 @@ class _DashboardWidgetState extends State<DashboardWidget>
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 8.0, 12.0, 8.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
-                                child: Icon(
-                                  Icons.schedule_rounded,
-                                  color: Colors.white,
-                                  size: 44.0,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HistoryWidget(),
                                 ),
-                              ),
-                              Text(
-                                'Meeting History',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodySmall
-                                    .override(
-                                      fontFamily: 'Roboto Mono',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                              ),
-                            ],
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Icon(
+                                    Icons.schedule_rounded,
+                                    color: Colors.white,
+                                    size: 44.0,
+                                  ),
+                                ),
+                                Text(
+                                  'Meeting History',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Roboto Mono',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ).animateOnPageLoad(
@@ -566,33 +583,47 @@ class _DashboardWidgetState extends State<DashboardWidget>
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 8.0, 12.0, 8.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
-                                child: Icon(
-                                  Icons.person_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  size: 44.0,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ListInfoWidget(),
                                 ),
-                              ),
-                              Text(
-                                'Personal information',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodySmall
-                                    .override(
-                                      fontFamily: 'Roboto Mono',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                              ),
-                            ],
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Icon(
+                                    Icons.person_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    size: 44.0,
+                                  ),
+                                ),
+                                Text(
+                                  'Personal information',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Roboto Mono',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ).animateOnPageLoad(
@@ -614,33 +645,47 @@ class _DashboardWidgetState extends State<DashboardWidget>
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 8.0, 12.0, 8.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
-                                child: Icon(
-                                  Icons.send,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  size: 44.0,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChatPageWidget(),
                                 ),
-                              ),
-                              Text(
-                                'Send',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodySmall
-                                    .override(
-                                      fontFamily: 'Roboto Mono',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                              ),
-                            ],
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Icon(
+                                    Icons.send,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    size: 44.0,
+                                  ),
+                                ),
+                                Text(
+                                  'Send',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Roboto Mono',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ).animateOnPageLoad(
