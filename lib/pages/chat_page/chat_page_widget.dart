@@ -1,10 +1,10 @@
 import '/backend/backend.dart';
-import '/flutter_flow/chat/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'chat_page_model.dart';
@@ -28,32 +28,13 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
   late ChatPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  FFChatInfo? _chatInfo;
-  bool isGroupChat() {
-    if (widget.chatUser == null) {
-      return true;
-    }
-    if (widget.chatRef == null) {
-      return false;
-    }
-    return _chatInfo?.isGroupChat ?? false;
-  }
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ChatPageModel());
 
-    FFChatManager.instance
-        .getChatInfo(
-      otherUserRecord: widget.chatUser,
-      chatReference: widget.chatRef,
-    )
-        .listen((info) {
-      if (mounted) {
-        setState(() => _chatInfo = info);
-      }
-    });
+    _model.fullNameController ??= TextEditingController();
   }
 
   @override
@@ -67,91 +48,141 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30.0,
-          borderWidth: 1.0,
-          buttonSize: 60.0,
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black,
-            size: 24.0,
-          ),
-          onPressed: () async {
-            Navigator.pop(context);
-          },
-        ),
-        actions: [],
-        centerTitle: false,
-        elevation: 2.0,
-      ),
       body: SafeArea(
-        child: StreamBuilder<FFChatInfo>(
-          stream: FFChatManager.instance.getChatInfo(
-            otherUserRecord: widget.chatUser,
-            chatReference: widget.chatRef,
-          ),
-          builder: (context, snapshot) => snapshot.hasData
-              ? FFChatPage(
-                  chatInfo: snapshot.data!,
-                  allowImages: true,
-                  backgroundColor: Color(0xFFF2F4F8),
-                  timeDisplaySetting: TimeDisplaySetting.alwaysVisible,
-                  currentUserBoxDecoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  otherUsersBoxDecoration: BoxDecoration(
-                    color: Color(0xFF4B39EF),
-                    border: Border.all(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  currentUserTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Color(0xFF1E2429),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.0,
-                    fontStyle: FontStyle.normal,
-                  ),
-                  otherUsersTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.0,
-                  ),
-                  inputHintTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Color(0xFF95A1AC),
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14.0,
-                  ),
-                  inputTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14.0,
-                  ),
-                  emptyChatWidget: Image.network(
-                    '',
-                  ),
+        child: Align(
+          alignment: AlignmentDirectional(1.0, 1.0),
+          child: Container(
+            width: double.infinity,
+            height: 90.0,
+            constraints: BoxConstraints(
+              maxWidth: 570.0,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 3.0,
+                  color: Color(0x33000000),
+                  offset: Offset(0.0, -1.0),
                 )
-              : Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      color: FlutterFlowTheme.of(context).primary,
+              ],
+            ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 0.0),
+                    child: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 8.0,
+                      borderWidth: 1.0,
+                      buttonSize: 44.0,
+                      icon: Icon(
+                        Icons.image_outlined,
+                        color: Color(0xFF57636C),
+                        size: 24.0,
+                      ),
+                      onPressed: () {
+                        print('IconButton pressed ...');
+                      },
                     ),
                   ),
-                ),
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                      child: TextFormField(
+                        controller: _model.fullNameController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'Inter',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Type here to respond...',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'Inter',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 24.0, 20.0, 24.0),
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              color: Color(0xFF111417),
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.normal,
+                            ),
+                        maxLines: 5,
+                        minLines: 1,
+                        validator: _model.fullNameControllerValidator
+                            .asValidator(context),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]'))
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                    child: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30.0,
+                      borderWidth: 1.0,
+                      buttonSize: 60.0,
+                      icon: Icon(
+                        Icons.send_rounded,
+                        color: Color(0xFF39D2C0),
+                        size: 30.0,
+                      ),
+                      onPressed: () {
+                        print('IconButton pressed ...');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
