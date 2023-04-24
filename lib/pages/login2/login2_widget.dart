@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -366,15 +365,6 @@ class _Login2WidgetState extends State<Login2Widget>
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            final user = await authManager.signInWithEmail(
-                              context,
-                              _model.emailAddressController.text,
-                              _model.passwordController.text,
-                            );
-                            if (user == null) {
-                              return;
-                            }
-
                             await Navigator.push(
                               context,
                               PageTransition(
